@@ -1,0 +1,2 @@
+***Algorithm finished***
+The found rules are stored in the Rules.txt file.
