@@ -61,6 +61,7 @@ GitHub page: https://github.com/dulljester/Assignment03-AprioriTid
         If Joiner class is made to extend Thread/implement Runnable, managing memory with low-level start/join calls is harder: with support = 0.1
         and confidence = 0.1 values as many as ~9200 rules are generated for sample data3, and on bluenose the program may run out of threads.
         That is why Java SE7's ExecutorService API is used for managing threads.
+        To confine ourselves to meaningful rules only, we require support >= 0.05 and confidence >= 0.05 rather than 0.00
 
 --Brief Description about bonus part
 

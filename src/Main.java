@@ -22,7 +22,7 @@ public class Main {
     private static Scanner inp;
 
     private static boolean probMeasure( double x ) {
-        return 0.00 <= x && x <= 1.00;
+        return 0.05 <= x && x <= 1.00;
     }
 
     public static void main( String ... args ) throws Exception {
@@ -48,7 +48,7 @@ public class Main {
         out.printf(MyUtils.ANSI_GREEN+"[done]"+MyUtils.ANSI_RESET+" reading from %s\n\n",infile.toString());
 
         do {
-            out.printf("Please select the minimum support rate(0.00-1.00): ");
+            out.printf("Please select the minimum support rate(0.05-1.00): ");
             String t;
             Scanner scan = new Scanner(t = inp.next());
             if ( !scan.hasNextDouble() || !probMeasure(support = scan.nextDouble()) ) {
@@ -61,7 +61,7 @@ public class Main {
         out.printf(MyUtils.ANSI_GREEN+"[done]"+MyUtils.ANSI_RESET+" support level set to %.2f\n\n",support);
 
         do {
-            out.printf("Please select the minimum confidence rate(0.00-1.00): ");
+            out.printf("Please select the minimum confidence rate(0.05-1.00): ");
             String t;
             Scanner scan = new Scanner(t = inp.next());
             if ( !scan.hasNextDouble() || !probMeasure(confidence = scan.nextDouble()) ) {
