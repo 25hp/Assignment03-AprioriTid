@@ -94,7 +94,7 @@ public class Main {
         bw.flush();
         bw.close();
         Path p = outfile.toPath();
-        out.printf(MyUtils.ANSI_YELLOW_BACKGROUND+MyUtils.ANSI_BLUE+"The result is in the file %s\n"+MyUtils.ANSI_RESET,p.normalize().toAbsolutePath().toString());
+        out.printf("The result is in the file "+MyUtils.ANSI_YELLOW_BACKGROUND+MyUtils.ANSI_BLUE+p.normalize().toAbsolutePath().toString()+MyUtils.ANSI_RESET+"\n");
         out.println(MyUtils.ANSI_GREEN+"*** Algorithm Finished ***"+ MyUtils.ANSI_RESET);
     }
 }

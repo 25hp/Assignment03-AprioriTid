@@ -97,6 +97,7 @@ public class AprioriTid {
                 ee.printStackTrace();
             }
         }
+        executorService.shutdown();
         return res ;
     }
 

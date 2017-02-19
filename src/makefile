@@ -2,7 +2,7 @@ JFLAGS = -g
 JC = javac
 .SUFFIXES: .java .class
 .java.class:
-    $(JC) $(JFLAGS) $*.java
+        $(JC) $(JFLAGS) $*.java
 
 CLASSES = \
         MyUtils.java \
@@ -18,5 +18,5 @@ default: classes
 classes: $(CLASSES:.java=.class)
 
 clean:
-    $(RM) *.class
-    $(RM) Rules.txt
+        $(RM) *.class
+        $(RM) Rules.txt
