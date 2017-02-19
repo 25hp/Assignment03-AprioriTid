@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.util.*;
+import java.util.concurrent.*;
 
 public class AprioriTid {
 
@@ -76,19 +77,26 @@ public class AprioriTid {
             buckets.get(pt).add(t);
         }
         List<Joiner> lst = new ArrayList<>();
+        ExecutorService executorService = Executors.newCachedThreadPool();
         for ( Map.Entry<Long,Set<Long>> entry: buckets.entrySet() ) {
             Joiner t = new Joiner(entry.getValue());
-            t.start();
             lst.add(t);
         }
-        for ( Joiner j: lst )
+        List<Future<Set<Long>>> list = null;
+        try {
+            list = executorService.invokeAll(lst);
+        } catch ( InterruptedException ie ) {
+            System.out.println("[generateCandidates]: "+ie.getMessage());
+            ie.printStackTrace();
+        }
+        for ( Future<Set<Long>> future: list ) {
             try {
-                j.join();
-                res.addAll(j.res);
-            } catch ( InterruptedException ie ) {
-                System.out.println("[generateCandidates]: "+ie.getMessage());
-                ie.printStackTrace();
+                res.addAll(future.get());
+            } catch ( Exception ee ) {
+                System.out.println("[generateCandidates]: "+ee.getMessage());
+                ee.printStackTrace();
             }
+        }
         return res ;
     }
 

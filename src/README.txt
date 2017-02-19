@@ -1,4 +1,5 @@
 This is an implementation of AprioriTid algorithm, following the original paper http://dl.acm.org/citation.cfm?id=672836
+GitHub page: https://github.com/dulljester/Assignment03-AprioriTid
 
 --Compile & run
 
@@ -53,10 +54,13 @@ This is an implementation of AprioriTid algorithm, following the original paper 
 
 --Other instructions / comments to the user
 
-        Some "embarrassingly-parallel" tasks have been realized using Java threads -- via extending the regular Thread class as in the case of
+        Some "embarrassingly-parallel" tasks have been realized using Java threads -- via implementing the Callable interface as in the case of
         Joiner class (used for generating candidate itemsets from L_{k-1} x L_{k-1} join),
-        or Java SE7's RecursiveTask as in the case of RulesMiner class.
+        or extending Java SE7's RecursiveTask as in the case of RulesMiner class.
         The datasets being small, this step may not look necessary, but it points to parallelization opportunities, so I though I might just as well add it.
+        If Joiner class is made to extend Thread/implement Runnable, managing memory with low-level start/join calls is harder: with support = 0.1
+        and confidence = 0.1 values as many as ~9200 rules are generated for sample data3, and on bluenose the program may run out of threads.
+        That is why Java SE7's ExecutorService API is used for managing threads.
 
 --Brief Description about bonus part
 
